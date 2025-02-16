@@ -1,0 +1,18 @@
+public class BankAccount
+{
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+
+    public decimal CalculateInterest(string accountType)
+    {
+        if (accountType == "Savings")
+        {
+            return AccountBalance * 0.05m; // 5% for Savings
+        }
+        else if (accountType == "Current")
+        {
+            return AccountBalance * 0.03m; // 3% for Current
+        }
+        return 0;
+    }
+}
