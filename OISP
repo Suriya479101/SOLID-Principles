@@ -1,0 +1,19 @@
+public interface IBankAccount
+{
+    string AccountNumber { get; set; }
+    decimal AccountBalance { get; set; }
+    decimal CalculateInterest();
+    void Withdraw(decimal amount);
+}
+public class FixedDepositAccount : IBankAccount
+{
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+
+    public decimal CalculateInterest() => AccountBalance * 0.08m;
+
+    public void Withdraw(decimal amount)
+    {
+        throw new NotImplementedException(); // FD Accounts don’t allow withdrawal
+    }
+}
