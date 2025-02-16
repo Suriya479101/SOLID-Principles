@@ -1,0 +1,11 @@
+public class BankAccount
+{
+    private InterestCalculator _interestCalculator = new InterestCalculator();
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+
+    public decimal GetInterest()
+    {
+        return _interestCalculator.CalculateInterest(AccountBalance);
+    }
+}
