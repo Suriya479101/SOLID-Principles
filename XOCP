@@ -1,0 +1,28 @@
+public interface IInterestCalculator
+{
+    decimal CalculateInterest(decimal accountBalance);
+}
+
+public class SavingsAccountInterest : IInterestCalculator
+{
+    public decimal CalculateInterest(decimal accountBalance) => accountBalance * 0.05m;
+}
+
+public class CurrentAccountInterest : IInterestCalculator
+{
+    public decimal CalculateInterest(decimal accountBalance) => accountBalance * 0.03m;
+}
+
+public class BankAccount
+{
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+    private readonly IInterestCalculator _interestCalculator;
+
+    public BankAccount(IInterestCalculator interestCalculator)
+    {
+        _interestCalculator = interestCalculator;
+    }
+
+    public decimal GetInterest() => _interestCalculator.CalculateInterest(AccountBalance);
+}
