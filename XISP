@@ -1,0 +1,32 @@
+public interface IBankAccount
+{
+    string AccountNumber { get; set; }
+    decimal AccountBalance { get; set; }
+}
+
+public interface IWithdrawable
+{
+    void Withdraw(decimal amount);
+}
+
+public interface IInterestCalculator
+{
+    decimal CalculateInterest();
+}
+
+public class SavingsAccount : IBankAccount, IWithdrawable, IInterestCalculator
+{
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+
+    public decimal CalculateInterest() => AccountBalance * 0.05m;
+    public void Withdraw(decimal amount) => AccountBalance -= amount;
+}
+
+public class FixedDepositAccount : IBankAccount, IInterestCalculator
+{
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+
+    public decimal CalculateInterest() => AccountBalance * 0.08m;
+}
