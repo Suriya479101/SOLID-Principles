@@ -1,0 +1,26 @@
+public interface IBankAccount
+{
+    string AccountNumber { get; set; }
+    decimal AccountBalance { get; set; }
+}
+
+public interface IInterestCalculator
+{
+    decimal CalculateInterest(IBankAccount account);
+}
+
+public class BankAccount : IBankAccount
+{
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+}
+
+public class InterestCalculator : IInterestCalculator
+{
+    public decimal CalculateInterest(IBankAccount account)
+    {
+        decimal interestRate = 0.05m; // 5% annual interest
+        int years = 1; // Assuming interest is calculated for 1 year
+        return account.AccountBalance * interestRate * years; // Simple Interest Formula: P * R * T
+    }
+}
