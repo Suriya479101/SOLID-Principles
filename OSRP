@@ -1,0 +1,12 @@
+public class BankAccount
+{             
+    public BankAccount() {}
+    public string AccountNumber { get; set; }
+    public decimal AccountBalance { get; set; }
+    public decimal CalculateInterest()
+    {
+        decimal interestRate = 0.05m; // 5% annual interest
+        int years = 1; // Assuming interest is calculated for 1 year
+        return AccountBalance * interestRate * years; // Simple Interest Formula: P * R * T
+    }
+}
